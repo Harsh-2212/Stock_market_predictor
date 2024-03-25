@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/css/output.css">
+</head>
+
+<body>
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-white text-lg font-bold">Logo</a>
+            <div>
+                <a href="#" class="text-white mx-4">Home</a>
+                <a href="url_for("auth.login")" class="text-white mx-4">Login</a>
+                <a href="url_for("auth.signup")" class="text-white mx-4">Sign-Up</a>
+                <a href="#" class="text-white mx-4">Contact</a>
+            </div>
+        </div>
+    </nav>
+    {% with messages = get_flashed_messages(category_filter=["error"]) %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="space-y-2 px-2 py-2">
+        <div class="alert text-red-800 bg-red-100 alert-closable" role="alert" x-data="{ open: true }"
+            x-show.transition="open">
+            {{ message }}
+            <button class="rounded-l-none btn alert text-red-800 bg-red-100 btn-sm alert-close"
+                @click="open = false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg></button>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    
+    {% with messages = get_flashed_messages(category_filter=["success"]) %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="space-y-2 px-2 py-2">
+        <div class="alert alert text-green-800 bg-green-100 alert-closable" role="alert" x-data="{ open: true }"
+            x-show.transition="open">
+            {{ message }}
+            <button class="rounded-l-none btn alert text-green-800 bg-green-100 btn-sm alert-close"
+                @click="open = false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg></button>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    {% with messages = get_flashed_messages(category_filter=["info"]) %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="space-y-2 px-2 py-2">
+        <div class="alert alert text-yellow-800 bg-yellow-100 alert-closable" role="alert" x-data="{ open: true }"
+            x-show.transition="open">
+            {{ message }}
+            <button class="rounded-l-none btn alert text-yellow-800 bg-yellow-100 btn-sm alert-close"
+                @click="open = false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg></button>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    {% block content %}
+
+    {% endblock %}
+    <footer class="bg-gray-800 p-4">
+        <div class="container mx-auto flex justify-center items-center">
+            <p class="text-white">© 2021 Your Company. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
